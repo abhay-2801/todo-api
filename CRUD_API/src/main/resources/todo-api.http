@@ -1,0 +1,36 @@
+### Get all todos
+GET http://localhost:8080/todos
+Accept: application/json
+
+###
+
+### Create a new todo
+POST http://localhost:8080/todos
+Content-Type: application/json
+
+{
+  "title": "Learn Spring Boot",
+  "completed": false
+}
+
+###
+
+### Get a specific todo by ID
+GET http://localhost:8080/todos/1
+Accept: application/json
+
+###
+
+### Update a todo
+PUT http://localhost:8080/todos/1
+Content-Type: application/json
+
+{
+  "title": "Master Spring Boot",
+  "completed": true
+}
+
+###
+
+### Delete a todo
+DELETE http://localhost:8080/todos/1
