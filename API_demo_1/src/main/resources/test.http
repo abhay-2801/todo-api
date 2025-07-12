@@ -1,0 +1,25 @@
+GET http://localhost:8080/api/todos
+
+###
+
+POST http://localhost:8080/api/todos
+Content-Type: application/json
+
+{
+  "title": "Learn Spring Boot",
+  "completed": false
+}
+
+###
+
+PUT http://localhost:8080/api/todos/1
+Content-Type: application/json
+
+{
+  "title": "Learn Spring Boot deeply",
+  "completed": true
+}
+
+###
+
+DELETE http://localhost:8080/api/todos/1
