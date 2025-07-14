@@ -15,21 +15,32 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping
-    public List<Todo> getTodos() { return service.findAll(); }
+    public List<Todo> getTodos() {
+        return service.findAll();
+    }
+
     @PostMapping
-    public Todo createTodo(@RequestBody Todo todo) { return service.save(todo); }
-    @GetMapping("/{id}") public ResponseEntity<Todo> getTodo(@PathVariable Long id) {
+    public Todo createTodo(@RequestBody Todo todo) {
+        return service.save(todo);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Todo> getTodo(@PathVariable Long id) {
         return service.findById(id).map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    @PutMapping("/{id}") public ResponseEntity<Todo> updateTodo(@PathVariable Long id, @RequestBody Todo updatedTodo) {
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Todo> updateTodo(@PathVariable Long id, @RequestBody Todo updatedTodo) {
         return service.findById(id).map(todo -> {
             todo.setTitle(updatedTodo.getTitle());
             todo.setCompleted(updatedTodo.isCompleted());
             return ResponseEntity.ok(service.save(todo));
         }).orElse(ResponseEntity.notFound().build());
     }
-    @DeleteMapping("/{id}") public void deleteTodo(@PathVariable Long id) {
+
+    @DeleteMapping("/{id}")
+    public void deleteTodo(@PathVariable Long id) {
         service.delete(id);
     }
 }
